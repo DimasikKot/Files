@@ -40,11 +40,11 @@ fun SettingsScreen(
                 modifier = Modifier
                     .size(400.dp, 700.dp)
                     .align(Alignment.Center)
-                    .sharedElement(
+                    .sharedBounds(
                         rememberSharedContentState(KEY_SETTINGS),
                         animatedVisibilityScope,
                         renderInOverlayDuringTransition = false
-                    ), elevation = CardDefaults.cardElevation(20.dp)
+                    ), elevation = CardDefaults.cardElevation(5.dp)
             ) {
                 LazyColumn(
                     Modifier.padding(10.dp), verticalArrangement = Arrangement.spacedBy(5.dp)

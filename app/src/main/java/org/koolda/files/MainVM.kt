@@ -10,6 +10,9 @@ import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import org.koolda.files.expect.Database
 import org.koolda.files.serializable.CatalogItem
+import org.koolda.files.serializable.Link
+import org.koolda.files.serializable.Note
+import org.koolda.files.serializable.Server
 import org.koolda.files.server.createApi
 
 class MainVM(private val datastore: Database, val navController: NavHostController) : ViewModel() {
@@ -19,6 +22,7 @@ class MainVM(private val datastore: Database, val navController: NavHostControll
     private var _debugTransparent by mutableFloatStateOf(datastore.getFloat("debugTransparent", 1f))
     private var _api = createApi(_serverIP)
     private var _listCatalogItems by mutableStateOf(emptyList<CatalogItem>())
+    private var _listNotes by mutableStateOf(emptyList<Note>())
     private var _diskForRequest by mutableStateOf("")
     private var _pathForRequest by mutableStateOf("")
 
@@ -95,6 +99,43 @@ class MainVM(private val datastore: Database, val navController: NavHostControll
                 }
             }
             return _listCatalogItems
+        }
+    val listNotes: List<Note>
+        get() {
+            viewModelScope.launch {
+                if (_diskForRequest == "") {
+                    _listNotes = listOf(
+                        Note(
+                            link = Link(
+                                disk = "C",
+                                path = "Users:kozhu:AndroidStudioProjects:Files:app:build:outputs:apk:debug",
+                                file = "app-debug.apk"
+                            ), server = Server(
+                                ip = "192.168.0.4:8888"
+                            )
+                        ), Note(
+                            link = Link(
+                                disk = "C",
+                                path = "Users:kozhu:AndroidStudioProjects:Files:app:build:outputs:apk:debug",
+                                file = "app-debug.apk"
+                            ), server = Server(
+                                ip = "192.168.0.16:8888"
+                            )
+                        ), Note(
+                            link = Link(
+                                disk = "C",
+                                path = "Users:murka:AndroidStudioProjects:Files:app:build:outputs:apk:debug",
+                                file = "app-debug.apk"
+                            ), server = Server(
+                                ip = "192.168.0.24:8888"
+                            )
+                        )
+                    ).filter { it.server.ip == _serverIP }
+                } else {
+                    _listNotes = emptyList()
+                }
+            }
+            return _listNotes
         }
     var diskForRequest: String
         get() = _diskForRequest

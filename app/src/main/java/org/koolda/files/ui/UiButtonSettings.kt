@@ -28,8 +28,8 @@ fun UiButtonSettings(
             Icon(
                 Icons.Default.Settings,
                 null,
-                tint = MaterialTheme.colorScheme.secondaryContainer,
-                modifier = Modifier.sharedElement(
+                tint = MaterialTheme.colorScheme.surfaceTint,
+                modifier = Modifier.sharedBounds(
                     rememberSharedContentState(KEY_SETTINGS), animatedVisibilityScope
                 )
             )

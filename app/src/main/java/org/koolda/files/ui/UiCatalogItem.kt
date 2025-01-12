@@ -18,7 +18,7 @@ import org.koolda.files.serializable.CatalogItem
 @Composable
 fun UiCatalogItem(
     modifier: Modifier = Modifier,
-    contentColor: Color = MaterialTheme.colorScheme.onSecondary,
+    contentColor: Color = MaterialTheme.colorScheme.secondary,
     it: CatalogItem,
 ) {
     Card(modifier = modifier) {

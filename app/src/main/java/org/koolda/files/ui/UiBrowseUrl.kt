@@ -27,14 +27,14 @@ import androidx.compose.ui.unit.dp
 fun UiBrowseUrl(
     onClickView: () -> Unit,
     onClickDownload: () -> Unit,
-    contentColor: Color = MaterialTheme.colorScheme.onSecondary,
+    contentColor: Color = MaterialTheme.colorScheme.secondary,
     modifier: Modifier = Modifier,
 ) {
     Row(modifier = modifier) {
 
         var textView by remember { mutableStateOf("View") }
         Card(
-            modifier = Modifier.height(40.dp).clip(MaterialTheme.shapes.small).clickable {
+            modifier = Modifier.height(40.dp).clip(MaterialTheme.shapes.extraSmall).clickable {
                 try {
                     onClickView()
                 } catch (e: Exception) {
@@ -55,7 +55,7 @@ fun UiBrowseUrl(
 
         var textDownload by remember { mutableStateOf("Download") }
         Card(
-            modifier = Modifier.height(40.dp).padding(start = 5.dp).clip(MaterialTheme.shapes.small)
+            modifier = Modifier.height(40.dp).padding(start = 5.dp).clip(MaterialTheme.shapes.extraSmall)
                 .clickable {
                     try {
                         onClickDownload()
