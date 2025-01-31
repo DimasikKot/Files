@@ -56,8 +56,7 @@ fun ServersScreen(
                     mutableStateOf(mainVM.serverIP)
                 }
                 IconButton(
-                    onClick = { mainVM.serverIP = stateTextFielsIP },
-                    enabled = mainVM.connectStatus != "true"
+                    onClick = { mainVM.serverIP = stateTextFielsIP }
                 ) {
                     Icon(
                         Icons.Default.Save, null, tint = MaterialTheme.colorScheme.surfaceTint
@@ -66,7 +65,6 @@ fun ServersScreen(
                 TextField(
                     stateTextFielsIP,
                     { stateTextFielsIP = it },
-                    enabled = mainVM.connectStatus != "true",
                     modifier = Modifier
                         .padding(start = 10.dp)
                         .align(

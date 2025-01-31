@@ -62,7 +62,11 @@ fun FoldersScreen(
                     .padding(5.dp)
                     .height(48.dp)
             ) {
-                IconButton(onClick = { mainVM.pathForRequest = ":" }) {
+                IconButton(onClick = {
+                    if (mainVM.diskForRequest == "") mainVM.navController.navigate(
+                        ServersScreen
+                    ) else mainVM.pathForRequest = ":"
+                }) {
                     Icon(
                         Icons.Default.ArrowBackIosNew,
                         null,
