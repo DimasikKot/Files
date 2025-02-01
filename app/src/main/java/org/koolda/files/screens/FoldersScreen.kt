@@ -50,7 +50,7 @@ fun FoldersScreen(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier
+        modifier = modifier
             .padding(10.dp)
             .fillMaxSize(), horizontalAlignment = Alignment.Start
     ) {

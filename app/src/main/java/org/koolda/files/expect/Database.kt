@@ -28,4 +28,12 @@ class Database(context: Context) {
     fun setBoolean(key: String, value: Boolean) {
         return prefs.edit().putBoolean(key, value).apply()
     }
+
+    fun getInt(key: String, defaultValue: Int): Int {
+        return prefs.getInt(key, defaultValue)
+    }
+
+    fun setInt(key: String, value: Int) {
+        return prefs.edit().putInt(key, value).apply()
+    }
 }

@@ -56,9 +56,11 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                             composable<ServersScreen> {
-                                BackHandler {
-                                    finishAndRemoveTask()
-                                    exitProcess(0)
+                                if (mainVM.connectStatus != "true") {
+                                    BackHandler {
+                                        finishAndRemoveTask()
+                                        exitProcess(0)
+                                    }
                                 }
                                 ServersScreen(
                                     mainVM = mainVM,

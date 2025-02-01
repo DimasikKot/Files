@@ -20,6 +20,8 @@ class MainVM(private val datastore: Database, val navController: NavHostControll
     private var _connectStatus by mutableStateOf(datastore.getString("connectStatus", "true"))
     private var _debugIsView by mutableStateOf(datastore.getBoolean("debugIsView", false))
     private var _debugTransparent by mutableFloatStateOf(datastore.getFloat("debugTransparent", 1f))
+    private var _serversIpStart by mutableFloatStateOf(datastore.getFloat("serversIpStart", 0f))
+    private var _serversIpEnd by mutableFloatStateOf(datastore.getFloat("serversIpEnd", 2f))
     private var _api = createApi(_serverIP)
     private var _listCatalogItems by mutableStateOf(emptyList<CatalogItem>())
     private var _listNotes by mutableStateOf(emptyList<Note>())
@@ -47,6 +49,22 @@ class MainVM(private val datastore: Database, val navController: NavHostControll
             viewModelScope.launch {
                 _debugTransparent = value
                 datastore.setFloat("debugTransparent", value)
+            }
+        }
+    var serversIpStart: Float
+        get() = _serversIpStart
+        set(value) {
+            viewModelScope.launch {
+                _serversIpStart = value
+                datastore.setFloat("serversIpStart", value)
+            }
+        }
+    var serversIpEnd: Float
+        get() = _serversIpEnd
+        set(value) {
+            viewModelScope.launch {
+                _serversIpEnd = value
+                datastore.setFloat("serversIpEnd", value)
             }
         }
     var serverIP: String

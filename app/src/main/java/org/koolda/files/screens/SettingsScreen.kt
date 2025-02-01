@@ -11,10 +11,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.RangeSlider
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -58,6 +63,23 @@ fun SettingsScreen(
                                 mainVM.debugTransparent, { mainVM.debugTransparent = it }, steps = 9
                             )
                         }
+                    }
+                    item {
+                        var sliderRange by remember { mutableStateOf((mainVM.serversIpStart)..(mainVM.serversIpEnd)) }
+                        val startValue = sliderRange.start.roundToInt()
+                        val endValue = sliderRange.endInclusive.roundToInt()
+                        Text("Servers Ip Range: $startValue..$endValue")
+                        RangeSlider(
+                            value = sliderRange,
+                            onValueChange = { newRange ->
+                                sliderRange = newRange
+                                mainVM.serversIpStart = newRange.start
+                                mainVM.serversIpEnd = newRange.endInclusive
+                            },
+                            valueRange = 0f..255f,
+                            steps = 254, // Количество шагов (255 - 1)
+                            modifier = Modifier.padding(vertical = 16.dp)
+                        )
                     }
                 }
             }
