@@ -1,7 +1,7 @@
 Приложение для связи с сервером ktor и получения файлов с устройства где работает сервер.
 
 Домашний экран
-<img src="https://github.com/user-attachments/assets/4a10a01d-1537-4d76-8c07-f3916065daf4" height="108"/>
+<img src="https://github.com/user-attachments/assets/4a10a01d-1537-4d76-8c07-f3916065daf4" height="1080"/>
 ![image](https://github.com/user-attachments/assets/4a10a01d-1537-4d76-8c07-f3916065daf4)
 ![image](https://github.com/user-attachments/assets/52ffd493-6671-46e4-9d8c-1a6cf1f40b3e)
 
